@@ -6,6 +6,8 @@ from math import degrees
 # pyfuzzy imports
 from fuzzy.storage.fcl.Reader import Reader
 
+membership = dict()
+
 
 def lineEquation((x1, y1), (x2, y2), x):
     if x2 - x1 == 0:
@@ -239,8 +241,65 @@ def right_fast_force(x, limit):
         return y
 
 
+def max_membership(x1, x2, key):
+    newVal = min(x1, x2)
+    if membership[key] is not None:
+        membership[key] = max(membership[key], newVal)
+    else:
+        membership[key] = newVal
 
 
+def rules(pa, pv):
+    max_membership(up_more_right_pa(pa), ccw_slow_pv(pv), 'right_fast')
+    max_membership(up_more_right_pa(pa), cw_slow_pv(pv), 'right_fast')
+    max_membership(up_more_left_pa(pa), cw_slow_pv(pv), 'left_fast')
+    max_membership(up_more_left_pa(pa), ccw_slow_pv(pv), 'left_fast')
+    max_membership(up_more_right_pa(pa), ccw_fast_pv(pv), 'left_slow')
+
+    max_membership(up_more_right_pa(pa), cw_fast_pv(pv), 'right_fast')
+    max_membership(up_more_left_pa(pa), cw_fast_pv(pv), 'right_slow')
+    max_membership(up_more_left_pa(pa), ccw_fast_pv(pv), 'left_fast')
+    max_membership(down_more_right_pa(pa), ccw_slow_pv(pv), 'right_fast')
+    max_membership(down_more_right_pa(pa), cw_slow_pv(pv), 'stop')
+
+    max_membership(down_more_left_pa(pa), cw_slow_pv(pv), 'left_fast')
+    max_membership(down_more_left_pa(pa), ccw_slow_pv(pv), 'stop')
+    max_membership(down_more_right_pa(pa), ccw_fast_pv(pv), 'stop')
+    max_membership(down_more_right_pa(pa), cw_fast_pv(pv), 'stop')
+    max_membership(down_more_left_pa(pa), cw_fast_pv(pv), 'stop')
+
+    max_membership(down_more_left_pa(pa), ccw_fast_pv(pv), 'stop')
+    max_membership(down_right_pa(pa), ccw_slow_pv(pv), 'right_fast')
+    max_membership(down_right_pa(pa), cw_slow_pv(pv), 'right_fast')
+    max_membership(down_left_pa(pa), cw_slow_pv(pv), 'left_fast')
+    max_membership(down_left_pa(pa), ccw_slow_pv(pv), 'left_fast')
+
+    max_membership(down_right_pa(pa), ccw_fast_pv(pv), 'stop')
+    max_membership(down_right_pa(pa), cw_fast_pv(pv), 'right_slow')
+    max_membership(down_left_pa(pa), cw_fast_pv(pv), 'stop')
+    max_membership(down_left_pa(pa), ccw_fast_pv(pv), 'left_slow')
+    max_membership(up_right_pa(pa), ccw_slow_pv(pv), 'right_slow')
+
+    max_membership(up_right_pa(pa), cw_slow_pv(pv), 'right_fast')
+    max_membership(up_right_pa(pa), stop_pv(pv), 'right_fast')
+    max_membership(up_left_pa(pa), cw_slow_pv(pv), 'left_slow')
+    max_membership(up_left_pa(pa), ccw_slow_pv(pv), 'left_fast')
+    max_membership(up_left_pa(pa), stop_pv(pv), 'left_fast')
+
+    max_membership(up_right_pa(pa), ccw_fast_pv(pv), 'left_fast')
+    max_membership(up_right_pa(pa), cw_fast_pv(pv), 'right_fast')
+    max_membership(up_left_pa(pa), cw_fast_pv(pv), 'right_fast')
+    max_membership(up_left_pa(pa), ccw_fast_pv(pv), 'left_fast')
+    max_membership(down_pa(pa), stop_pv(pv), 'right_fast')
+
+    max_membership(down_pa(pa), cw_fast_pv(pv), 'stop')
+    max_membership(down_pa(pa), ccw_fast_pv(pv), 'stop')
+    max_membership(up_pa(pa), ccw_slow_pv(pv), 'left_slow')
+    max_membership(up_pa(pa), ccw_fast_pv(pv), 'left_fast')
+    max_membership(up_pa(pa), cw_slow_pv(pv), 'right_slow')
+
+    max_membership(up_pa(pa), cw_fast_pv(pv), 'right_fast')
+    max_membership(up_pa(pa), stop_pv(pv), 'stop')
 
 class System:
     def __init__(self):

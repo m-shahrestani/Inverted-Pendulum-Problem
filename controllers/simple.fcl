@@ -55,48 +55,37 @@ FUNCTION_BLOCK InvertedPendulum
 				OR (pa IS up_left AND pv IS cw_slow)
 			THEN force IS stop;
 
+
 		RULE 1: IF (pa IS up_more_right) AND (pv IS ccw_slow) THEN force IS right_fast;
 		RULE 2: IF (pa IS up_more_right) AND (pv IS cw_slow) THEN force IS right_fast;
-
 		RULE 3: IF (pa IS up_more_left) AND (pv IS cw_slow) THEN force IS left_fast;
 		RULE 4: IF (pa IS up_more_left) AND (pv IS ccw_slow) THEN force IS left_fast;
-
 		RULE 5: IF (pa IS up_more_right) AND (pv IS ccw_fast) THEN force IS left_slow;
-		RULE 6: IF (pa IS up_more_right) AND (pv IS cw_fast) THEN force IS right_fast;
 
+		RULE 6: IF (pa IS up_more_right) AND (pv IS cw_fast) THEN force IS right_fast;
 		RULE 7: IF (pa IS up_more_left) AND (pv IS cw_fast) THEN force IS right_slow;
 		RULE 8: IF (pa IS up_more_left) AND (pv IS ccw_fast) THEN force IS left_fast;
-
-
 		RULE 9: IF (pa IS down_more_right) AND (pv IS ccw_slow) THEN force IS right_fast;
 		RULE 10: IF (pa IS down_more_right) AND (pv IS cw_slow) THEN force IS stop;
 
 		RULE 11: IF (pa IS down_more_left) AND (pv IS cw_slow) THEN force IS left_fast;
 		RULE 12: IF (pa IS down_more_left) AND (pv IS ccw_slow) THEN force IS stop;
-
-
 		RULE 13: IF (pa IS down_more_right) AND (pv IS ccw_fast) THEN force IS stop;
 		RULE 14: IF (pa IS down_more_right) AND (pv IS cw_fast) THEN force IS stop;
-
 		RULE 15: IF (pa IS down_more_left) AND (pv IS cw_fast) THEN force IS stop;
+
 		RULE 16: IF (pa IS down_more_left) AND (pv IS ccw_fast) THEN force IS stop;
-
-
 		RULE 17: IF (pa IS down_right) AND (pv IS ccw_slow) THEN force IS right_fast;
 		RULE 18: IF (pa IS down_right) AND (pv IS cw_slow) THEN force IS right_fast;
-
 		RULE 19: IF (pa IS down_left) AND (pv IS cw_slow) THEN force IS left_fast;
 		RULE 20: IF (pa IS down_left) AND (pv IS ccw_slow) THEN force IS left_fast;
 
-
 		RULE 21: IF (pa IS down_right) AND (pv IS ccw_fast) THEN force IS stop;
 		RULE 22: IF (pa IS down_right) AND (pv IS cw_fast) THEN force IS right_slow;
-
 		RULE 23: IF (pa IS down_left) AND (pv IS cw_fast) THEN force IS stop;
 		RULE 24: IF (pa IS down_left) AND (pv IS ccw_fast) THEN force IS left_slow;
-
-
 		RULE 25: IF (pa IS up_right) AND (pv IS ccw_slow) THEN force IS right_slow;
+
 		RULE 26: IF (pa IS up_right) AND (pv IS cw_slow) THEN force IS right_fast;
 		RULE 27: IF (pa IS up_right) AND (pv IS stop) THEN force IS right_fast;
 		RULE 28: IF (pa IS up_left) AND (pv IS cw_slow) THEN force IS left_slow;
@@ -108,15 +97,14 @@ FUNCTION_BLOCK InvertedPendulum
 		RULE 32: IF (pa IS up_right) AND (pv IS cw_fast) THEN force IS right_fast;
 		RULE 33: IF (pa IS up_left) AND (pv IS cw_fast) THEN force IS right_fast;
 		RULE 34: IF (pa IS up_left) AND (pv IS ccw_fast) THEN force IS left_fast;
-
-
 		RULE 35: IF (pa IS down) AND (pv IS stop) THEN force IS right_fast;
+
 		RULE 36: IF (pa IS down) AND (pv IS cw_fast) THEN force IS stop;
 		RULE 37: IF (pa IS down) AND (pv IS ccw_fast) THEN force IS stop;
-
 		RULE 38: IF (pa IS up) AND (pv IS ccw_slow) THEN force IS left_slow;
 		RULE 39: IF (pa IS up) AND (pv IS ccw_fast) THEN force IS left_fast;
 		RULE 40: IF (pa IS up) AND (pv IS cw_slow) THEN force IS right_slow;
+
 		RULE 41: IF (pa IS up) AND (pv IS cw_fast) THEN force IS right_fast;
 		RULE 42: IF (pa IS up) AND (pv IS stop) THEN force IS stop;
 
