@@ -29,18 +29,12 @@ if __name__ == '__main__':
 
     # simple
     world = World(**conf.world_config())
-    controller2 = FuzzyController2(**conf.controller_config())
+    controller2 = FuzzyController2()
     manager = Manager(world, controller2, **conf.simulation_config())
     manager.run()
 
-    # simple
-    # world = World(**conf.world_config())
-    # controller3 = FuzzyController3(**conf.controller_config())
-    # manager = Manager(world, controller3, **conf.simulation_config())
-    # manager.run()
-
     # complex
-    # world = World(**conf2.world_config())
-    # controller2 = FuzzyController2(**conf2.controller_config())
-    # manager = Manager(world, controller2, **conf2.simulation_config())
+    # world = World(**conf.world_config())
+    # controller3 = FuzzyController3()
+    # manager = Manager(world, controller3, **conf.simulation_config())
     # manager.run()
