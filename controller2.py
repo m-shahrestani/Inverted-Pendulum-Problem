@@ -306,7 +306,7 @@ class System:
         return membership
 
     # Defuzzification
-    def COM(self, x, y):
+    def COG(self, x, y):
         centroid = 0
         integral = 0
         for i in enumerate(x):
@@ -328,4 +328,4 @@ class System:
                           self.right_fast_force(i[1], membership['right_fast']),
                           self.right_slow_force(i[1], membership['right_slow']),
                           self.stop_force(i[1], membership['stop']))
-        output['force'] = self.COM(x, y)
+        output['force'] = self.COG(x, y)
