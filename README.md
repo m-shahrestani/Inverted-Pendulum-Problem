@@ -1,3 +1,6 @@
+Computational Intelligence Course - Fuzzy project - 
+Implementation of fuzzy controler in python to solve inverted pendulum problem without pyfuzzy library.
+
 # Fuzzy Inverted Pendulum
 
 Basically, this project consists of an inverted pendulum simulator and a fuzzy controller. The main goal was to develop a simple yet useful simulator to model the environment, so that you are enabled to easily create a fuzzy controller for the inverted pendulum problem.
