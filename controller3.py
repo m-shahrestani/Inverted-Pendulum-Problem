@@ -348,13 +348,20 @@ class System:
         else:
             membership[key] = newVal
 
+    def max_membership(self, membership, x1, x2, x3, key):
+        newVal = min(x1, x2, x3)
+        if key in membership:
+            membership[key] = max(membership[key], newVal)
+        else:
+            membership[key] = newVal
+
     def rules(self, pa, pv, cp, cv):
         membership = dict()
         membership['stop'] = max(min((self.up_pa(pa), self.stop_pv(pv))),
                                  min((self.up_right_pa(pa), self.ccw_slow_pv(pv))),
                                  min((self.up_left_pa(pa), self.cw_slow_pv(pv))))
-        self.max_membership(membership, self.up_more_right_pa(pa), self.ccw_slow_pv(pv), 'right_fast')
-        self.max_membership(membership, self.up_more_right_pa(pa), self.cw_slow_pv(pv), 'right_fast')
+        self.max_membership(membership, self.up_more_right_pa(pa), self.ccw_slow_pv(pv), self.left_fast_cv(cv), 'right_fast')
+        self.max_membership(membership, self.up_more_right_pa(pa), self.cw_slow_pv(pv), self.left_fast_cv(cv), 'right_fast')
         self.max_membership(membership, self.up_more_left_pa(pa), self.cw_slow_pv(pv), 'left_fast')
         self.max_membership(membership, self.up_more_left_pa(pa), self.ccw_slow_pv(pv), 'left_fast')
         self.max_membership(membership, self.up_more_right_pa(pa), self.ccw_fast_pv(pv), 'left_slow')
