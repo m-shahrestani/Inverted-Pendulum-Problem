@@ -1,5 +1,5 @@
 Computational Intelligence Course - Fuzzy project - 
-Implementation of fuzzy controler in python to solve inverted pendulum problem without pyfuzzy library.
+Implementation of fuzzy controller in python to solve inverted pendulum problem without pyfuzzy library.
 
 # Fuzzy Inverted Pendulum
 
